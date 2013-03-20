@@ -150,8 +150,6 @@ ro.qualcomm.bluetooth.ftp=true
 #
 ro.bluetooth.request.master=true
 
-
-
 #
 # System prop for using landscape preview layout in camera
 #
@@ -160,24 +158,15 @@ debug.camera.landscape=true
 #
 # ADDITIONAL_BUILD_PROPERTIES
 #
-ro.config.ringtone=Orion.ogg
-ro.config.notification_sound=Deneb.ogg
-ro.config.alarm_alert=Hassium.ogg
 keyguard.no_require_sim=true
 ro.com.android.dateformat=MM-dd-yyyy
-ro.carrier=unknown
-ro.ril.hsxpa=1
-ro.ril.gprsclass=10
 ro.adb.qemud=1
-ro.rommanager.developerid=cyanogenmod
 ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
 ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html
 ro.com.google.clientidbase=android-google
 ro.com.android.wifi-watchlist=GoogleGuest
 ro.setupwizard.enterprise_mode=1
 ro.com.android.dataroaming=false
-ro.cm.version=10-20130201-UNOFFICIAL-arthur
-ro.modversion=10-20130201-UNOFFICIAL-arthur
 dalvik.vm.execution-mode=int:jit
 ro.telephony.call_ring.multiple=false
 ro.telephony.call_ring.delay=5000
