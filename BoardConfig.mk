@@ -27,15 +27,13 @@
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DLGE_MSM8960 -DF160 -DF160L
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DLGE_MSM8960
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := device/lge/l0/include
 
 # test
 TARGET_NO_BOOTLOADER := true
-#TARGET_NO_RECOVERY := true
-#TARGET_NO_KERNEL := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80200000
@@ -48,8 +46,6 @@ LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel \
-
-
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8960
@@ -119,8 +115,4 @@ TARGET_FORCE_CPU_UPLOAD := true
 
 # Preload bootanimation
 TARGET_BOOTANIMATION_PRELOAD := true
-
-# Releasetools
-#TARGET_PROVIDES_RELEASETOOLS := true
-#TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/l0/releasetools/l0_ota_from_target_files
 
