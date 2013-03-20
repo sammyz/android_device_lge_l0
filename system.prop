@@ -44,13 +44,6 @@ ro.use_data_netmgrd=true
 telephony.lteOnCdmaDevice=0
 mobiledata.interfaces=wlan0,rmnet0
 
-ro.carrier=Boost Mobile
-gsm.operator.alpha=Boost Mobile
-gsm.operator.numeric=311870
-ro.cdma.default_alpha=Boost Mobile
-ro.cdma.default_numeric=311870
-ro.cdma.home.operator.alpha=Boost Mobile
-ro.cdma.home.operator.numeric=311870
 DEVICE_PROVISIONED=1
 
 persist.rild.nitz_plmn=
