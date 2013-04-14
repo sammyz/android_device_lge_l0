@@ -77,12 +77,16 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/firmware/a225p5_pm4.fw:/system/etc/firmware/a225p5_pm4.fw \
     device/lge/l0/prebuilt/etc/firmware/a225_pfp.fw:/system/etc/firmware/a225_pfp.fw \
     device/lge/l0/prebuilt/etc/firmware/a225_pm4.fw:/system/etc/firmware/a225_pm4.fw \
-    device/lge/l0/prebuilt/etc/firmware/a300_pfp.fw:/system/etc/firmware/a225_pfp.fw \
-    device/lge/l0/prebuilt/etc/firmware/a300_pm4.fw:/system/etc/firmware/a225_pm4.fw \
     device/lge/l0/prebuilt/etc/firmware/cyttsp_8960_cdp.hex:/system/etc/firmware/cyttsp_8960_cdp.hex \
     device/lge/l0/prebuilt/etc/firmware/leia_pfp_470.fw:/system/etc/firmware/leia_pfp_470.fw \
     device/lge/l0/prebuilt/etc/firmware/leia_pm4_470.fw:/system/etc/firmware/leia_pm4_470.fw \
-    device/lge/l0/prebuilt/etc/firmware/vidc_1080p.fw:/system/etc/firmware/vidc_1080p.fw
+    device/lge/l0/prebuilt/etc/firmware/vidc.b00:/system/etc/firmware/vidc.b00 \
+    device/lge/l0/prebuilt/etc/firmware/vidc.b01:/system/etc/firmware/vidc.b01 \
+    device/lge/l0/prebuilt/etc/firmware/vidc.b02:/system/etc/firmware/vidc.b02 \
+    device/lge/l0/prebuilt/etc/firmware/vidc.b03:/system/etc/firmware/vidc.b03 \
+    device/lge/l0/prebuilt/etc/firmware/vidc.mdt:/system/etc/firmware/vidc.mdt \
+    device/lge/l0/prebuilt/etc/firmware/vidc_1080p.fw:/system/etc/firmware/vidc_1080p.fw \
+    device/lge/l0/prebuilt/etc/firmware/vidcfw.elf:/system/etc/firmware/vidcfw.elf
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -108,6 +112,7 @@ PRODUCT_PACKAGES += \
 
 # Graphics
 PRODUCT_PACKAGES += \
+    lights.msm8960 \
     copybit.msm8960 \
     gralloc.msm8960 \
     hwcomposer.msm8960 \
@@ -116,6 +121,10 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libQcomUI \
     libtilerenderer
+
+# LTE on CDMA
+PRODUCT_PACKAGES += \
+    Stk
 
 # Qualcomm scripts
 PRODUCT_COPY_FILES += \
@@ -161,14 +170,18 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml
+#    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 
 # GPS config
 PRODUCT_COPY_FILES += device/common/gps/gps.conf_AS:system/etc/gps.conf
 
 # Media config
 PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/etc/featureset.xml:system/etc/featureset.xml \
+    device/lge/l0/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/lge/l0/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/lge/l0/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml
+    device/lge/l0/prebuilt/etc/settings.xml:system/etc/settings.xml \
+    device/lge/l0/prebuilt/etc/telephony.xml:system/etc/telephony.xml
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -178,9 +191,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/thermald.conf:/system/etc/thermald.conf
 
-# apn / spn config
+# apn config
 PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/apns-conf.xml:/system/etc/apns-conf.xml
+#    device/lge/l0/prebuilt/etc/spn-conf.xml:/system/etc/spn-conf.xml
 
 # Sound configs
 PRODUCT_COPY_FILES += \
@@ -231,41 +245,54 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt libraries that are needed
 PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/bin/atd:system/bin/atd \
+    device/lge/l0/prebuilt/bin/ATFWD-daemon:system/bin/ATFWD-daemon \
+    device/lge/l0/prebuilt/bin/bridgemgrd:system/bin/bridgemgrd \
     device/lge/l0/prebuilt/bin/btnvtool:system/bin/btnvtool \
+    device/lge/l0/prebuilt/bin/cnd:system/bin/cnd \
     device/lge/l0/prebuilt/bin/ds_fmc_appd:system/bin/ds_fmc_appd \
-    device/lge/l0/prebuilt/bin/nl_listener:system/bin/nl_listener \
-    device/lge/l0/prebuilt/bin/radish:system/bin/radish \
-    device/lge/l0/prebuilt/bin/usbhub:system/bin/usbhub \
-    device/lge/l0/prebuilt/bin/usbhub_init:system/bin/usbhub_init \
-    device/lge/l0/prebuilt/bin/v4l2-qcamera-app:system/bin/v4l2-qcamera-app \
+    device/lge/l0/prebuilt/bin/ftm_ptt:system/bin/ftm_ptt \
+    device/lge/l0/prebuilt/bin/gsiff_daemon:system/bin/gsiff_daemon \
     device/lge/l0/prebuilt/bin/hci_qcomm_init:system/bin/hci_qcomm_init \
+    device/lge/l0/prebuilt/bin/hdmid:system/bin/hdmid \
     device/lge/l0/prebuilt/bin/hostapd:system/bin/hostapd \
+    device/lge/l0/prebuilt/bin/mm-pp-daemon:system/bin/mm-pp-daemon \
     device/lge/l0/prebuilt/bin/mm-qcamera-daemon:system/bin/mm-qcamera-daemon \
     device/lge/l0/prebuilt/bin/mpdecision:system/bin/mpdecision \
     device/lge/l0/prebuilt/bin/netmgrd:system/bin/netmgrd \
-    device/lge/l0/prebuilt/bin/rmt_storage:system/bin/rmt_storage \
-    device/lge/l0/prebuilt/bin/qmuxd:system/bin/qmuxd \
-    device/lge/l0/prebuilt/bin/thermald:system/bin/thermald \
-    device/lge/l0/prebuilt/bin/time_daemon:system/bin/time_daemon \
-    device/lge/l0/prebuilt/bin/cnd:system/bin/cnd \
-    device/lge/l0/prebuilt/bin/bridgemgrd:system/bin/bridgemgrd \
+    device/lge/l0/prebuilt/bin/nl_listener:system/bin/nl_listener \
     device/lge/l0/prebuilt/bin/port-bridge:system/bin/port-bridge \
     device/lge/l0/prebuilt/bin/qmiproxy:system/bin/qmiproxy \
-    device/lge/l0/prebuilt/bin/sensors.qcom:system/bin/sensors.qcom \
+    device/lge/l0/prebuilt/bin/qmuxd:system/bin/qmuxd \
+    device/lge/l0/prebuilt/bin/qseecomd:system/bin/qseecomd \
     device/lge/l0/prebuilt/bin/quipc_igsn:system/bin/quipc_igsn \
     device/lge/l0/prebuilt/bin/quipc_main:system/bin/quipc_main \
-    device/lge/l0/prebuilt/bin/ATFWD-daemon:system/bin/ATFWD-daemon \
-    device/lge/l0/prebuilt/bin/hdmid:system/bin/hdmid \
-    device/lge/l0/prebuilt/bin/mm-pp-daemon:system/bin/mm-pp-daemon \
+    device/lge/l0/prebuilt/bin/radish:system/bin/radish \
     device/lge/l0/prebuilt/bin/rild:system/bin/rild \
-    device/lge/l0/prebuilt/bin/ftm_ptt:system/bin/ftm_ptt \
-    device/lge/l0/prebuilt/bin/gsiff_daemon:system/bin/gsiff_daemon \
-    device/lge/l0/prebuilt/bin/qseecomd:system/bin/qseecomd \
-    device/lge/l0/prebuilt/bin/atd:system/bin/atd \
+    device/lge/l0/prebuilt/bin/rmt_storage:system/bin/rmt_storage \
+    device/lge/l0/prebuilt/bin/sensors.qcom:system/bin/sensors.qcom \
+    device/lge/l0/prebuilt/bin/thermald:system/bin/thermald \
+    device/lge/l0/prebuilt/bin/time_daemon:system/bin/time_daemon \
+    device/lge/l0/prebuilt/bin/usbhub:system/bin/usbhub \
+    device/lge/l0/prebuilt/bin/usbhub_init:system/bin/usbhub_init \
+    device/lge/l0/prebuilt/bin/v4l2-qcamera-app:system/bin/v4l2-qcamera-app \
+    device/lge/l0/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
+    device/lge/l0/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
+    device/lge/l0/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
+    device/lge/l0/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
+    device/lge/l0/prebuilt/lib/egl/libGLESv2S3D_adreno200.so:system/lib/egl/libGLESv2S3D_adreno200.so \
+    device/lge/l0/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
+    device/lge/l0/prebuilt/lib/hw/camera.msm8960.so:system/lib/hw/camera.msm8960.so \
+    device/lge/l0/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
+    device/lge/l0/prebuilt/lib/hw/nfc.msm8960.so:system/lib/hw/nfc.msm8960.so \
+    device/lge/l0/prebuilt/lib/hw/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so \
     device/lge/l0/prebuilt/lib/libacdbloader.so:system/lib/libacdbloader.so \
+    device/lge/l0/prebuilt/lib/libami306.so:system/lib/libami306.so \
     device/lge/l0/prebuilt/lib/libaudcal.so:system/lib/libaudcal.so \
     device/lge/l0/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so \
     device/lge/l0/prebuilt/lib/libc2d2_z180.so:system/lib/libc2d2_z180.so \
+    device/lge/l0/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
+    device/lge/l0/prebuilt/lib/libcamera_client.so:system/lib/libcamera_client.so \
     device/lge/l0/prebuilt/lib/libchromatix_imx074_default_video.so:system/lib/libchromatix_imx074_default_video.so \
     device/lge/l0/prebuilt/lib/libchromatix_imx074_preview.so:system/lib/libchromatix_imx074_preview.so \
     device/lge/l0/prebuilt/lib/libchromatix_imx074_video_hd.so:system/lib/libchromatix_imx074_video_hd.so \
@@ -282,9 +309,9 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/libchromatix_ov2720_default_video.so:system/lib/libchromatix_ov2720_default_video.so \
     device/lge/l0/prebuilt/lib/libchromatix_ov2720_preview.so:system/lib/libchromatix_ov2720_preview.so \
     device/lge/l0/prebuilt/lib/libchromatix_s5k3l1yx_default_video.so:system/lib/libchromatix_s5k3l1yx_default_video.so \
-    device/lge/l0/prebuilt/lib/libchromatix_s5k3l1yx_hfr_120fps.so:system/lib/libchromatix_s5k3l1yx_hfr_120fps.so \
     device/lge/l0/prebuilt/lib/libchromatix_s5k3l1yx_hfr_60fps.so:system/lib/libchromatix_s5k3l1yx_hfr_60fps.so \
     device/lge/l0/prebuilt/lib/libchromatix_s5k3l1yx_hfr_90fps.so:system/lib/libchromatix_s5k3l1yx_hfr_90fps.so \
+    device/lge/l0/prebuilt/lib/libchromatix_s5k3l1yx_hfr_120fps.so:system/lib/libchromatix_s5k3l1yx_hfr_120fps.so \
     device/lge/l0/prebuilt/lib/libchromatix_s5k3l1yx_preview.so:system/lib/libchromatix_s5k3l1yx_preview.so \
     device/lge/l0/prebuilt/lib/libchromatix_s5k3l1yx_video_hd.so:system/lib/libchromatix_s5k3l1yx_video_hd.so \
     device/lge/l0/prebuilt/lib/libchromatix_s5k3l1yx_zsl.so:system/lib/libchromatix_s5k3l1yx_zsl.so \
@@ -293,66 +320,53 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/libchromatix_s5k4e1_zsl.so:system/lib/libchromatix_s5k4e1_zsl.so \
     device/lge/l0/prebuilt/lib/libCommandSvc.so:system/lib/libCommandSvc.so \
     device/lge/l0/prebuilt/lib/libconfigdb.so:system/lib/libconfigdb.so \
+    device/lge/l0/prebuilt/lib/libdiag.so:system/lib/libdiag.so \
+    device/lge/l0/prebuilt/lib/libDivxDrm.so:system/lib/libDivxDrm.so \
+    device/lge/l0/prebuilt/lib/libdl.so:system/lib/libdl.so \
     device/lge/l0/prebuilt/lib/libdrmdiag.so:system/lib/libdrmdiag.so \
     device/lge/l0/prebuilt/lib/libdrmfs.so:system/lib/libdrmfs.so \
-    device/lge/l0/prebuilt/lib/libdsutils.so:system/lib/libdsutils.so \
+    device/lge/l0/prebuilt/lib/libdsi_netctrl.so:system/lib/libdsi_netctrl.so \
     device/lge/l0/prebuilt/lib/libdsprofile.so:system/lib/libdsprofile.so \
     device/lge/l0/prebuilt/lib/libdss.so:system/lib/libdss.so \
     device/lge/l0/prebuilt/lib/libdsucsd.so:system/lib/libdsucsd.so \
     device/lge/l0/prebuilt/lib/libdsutils.so:system/lib/libdsutils.so \
-    device/lge/l0/prebuilt/lib/libI420colorconvert.so:system/lib/libI420colorconvert.so \
-    device/lge/l0/prebuilt/lib/libimage-jpeg-dec-omx-comp.so:system/lib/libimage-jpeg-dec-omx-comp.so \
-    device/lge/l0/prebuilt/lib/libllvm-a3xx.so:system/lib/libllvm-a3xx.so \
-    device/lge/l0/prebuilt/lib/libmmjps.so:system/lib/libmmjps.so \
-    device/lge/l0/prebuilt/lib/libmmmpo.so:system/lib/libmmmpo.so \
-    device/lge/l0/prebuilt/lib/libmmmpod.so:system/lib/libmmmpod.so \
-    device/lge/l0/prebuilt/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
-    device/lge/l0/prebuilt/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-    device/lge/l0/prebuilt/lib/libOpenCL.so:system/lib/libOpenCL.so \
-    device/lge/l0/prebuilt/lib/libQSEEComAPI.so:system/lib/libQSEEComAPI.so \
-    device/lge/l0/prebuilt/lib/libsensor_test.so:system/lib/libsensor_test.so \
-    device/lge/l0/prebuilt/lib/libsensor_user_cal.so:system/lib/libsensor_user_cal.so \
-    device/lge/l0/prebuilt/lib/libDivxDrm.so:system/lib/libDivxDrm.so \
-    device/lge/l0/prebuilt/lib/hw/camera.msm8960.so:system/lib/hw/camera.msm8960.so \
-    device/lge/l0/prebuilt/lib/libcamera_client.so:system/lib/libcamera_client.so \
     device/lge/l0/prebuilt/lib/libgemini.so:system/lib/libgemini.so \
-    device/lge/l0/prebuilt/lib/libmmcamera_faceproc.so:system/lib/libmmcamera_faceproc.so \
-    device/lge/l0/prebuilt/lib/libmmcamera_frameproc.so:system/lib/libmmcamera_frameproc.so \
-    device/lge/l0/prebuilt/lib/libmmcamera_statsproc30.so:system/lib/libmmcamera_statsproc30.so \
-    device/lge/l0/prebuilt/lib/libmmipl.so:system/lib/libmmipl.so \
-    device/lge/l0/prebuilt/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
-    device/lge/l0/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so \
-    device/lge/l0/prebuilt/lib/libOlaFaceDetector.so:system/lib/libOlaFaceDetector.so \
-    device/lge/l0/prebuilt/lib/libOlaLGECameraJNI.so:system/lib/libOlaLGECameraJNI.so \
-    device/lge/l0/prebuilt/lib/libimage-jpeg-enc-omx-comp.so:system/lib/libimage-jpeg-enc-omx-comp.so \
-    device/lge/l0/prebuilt/lib/libimage-omx-common.so:system/lib/libimage-omx-common.so \
-    device/lge/l0/prebuilt/lib/libmmosal.so:system/lib/libmmosal.so \
-    device/lge/l0/prebuilt/lib/libmmparser.so:system/lib/libmmparser.so \
-    device/lge/l0/prebuilt/lib/libmmstillomx.so:system/lib/libmmstillomx.so \
-    device/lge/l0/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
-    device/lge/l0/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    device/lge/l0/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    device/lge/l0/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    device/lge/l0/prebuilt/lib/egl/libGLESv2S3D_adreno200.so:system/lib/egl/libGLESv2S3D_adreno200.so \
-    device/lge/l0/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
-    device/lge/l0/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
-    device/lge/l0/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
-    device/lge/l0/prebuilt/lib/libsc-a3xx.so:system/lib/libsc-a3xx.so \
-    device/lge/l0/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
     device/lge/l0/prebuilt/lib/libgps.so:system/lib/libgps.so \
     device/lge/l0/prebuilt/lib/libgps.utils.so:system/lib/libgps.utils.so \
+    device/lge/l0/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
+    device/lge/l0/prebuilt/lib/libI420colorconvert.so:system/lib/libI420colorconvert.so \
+    device/lge/l0/prebuilt/lib/libidl.so:system/lib/libidl.so \
+    device/lge/l0/prebuilt/lib/libimage-jpeg-dec-omx-comp.so:system/lib/libimage-jpeg-dec-omx-comp.so \
+    device/lge/l0/prebuilt/lib/libimage-jpeg-enc-omx-comp.so:system/lib/libimage-jpeg-enc-omx-comp.so \
+    device/lge/l0/prebuilt/lib/libimage-omx-common.so:system/lib/libimage-omx-common.so \
+    device/lge/l0/prebuilt/lib/liblgftmitem.so:system/lib/liblgftmitem.so \
+    device/lge/l0/prebuilt/lib/libllvm-a3xx.so:system/lib/libllvm-a3xx.so \
     device/lge/l0/prebuilt/lib/libloc_adapter.so:system/lib/libloc_adapter.so \
     device/lge/l0/prebuilt/lib/libloc_api_v02.so:system/lib/libloc_api_v02.so \
     device/lge/l0/prebuilt/lib/libloc_eng.so:system/lib/libloc_eng.so \
     device/lge/l0/prebuilt/lib/libloc_ext.so:system/lib/libloc_ext.so \
-    device/lge/l0/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
+    device/lge/l0/prebuilt/lib/liblog.so:system/lib/liblog.so \
+    device/lge/l0/prebuilt/lib/libmmcamera_faceproc.so:system/lib/libmmcamera_faceproc.so \
+    device/lge/l0/prebuilt/lib/libmmcamera_frameproc.so:system/lib/libmmcamera_frameproc.so \
+    device/lge/l0/prebuilt/lib/libmmcamera_statsproc30.so:system/lib/libmmcamera_statsproc30.so \
     device/lge/l0/prebuilt/lib/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \
+    device/lge/l0/prebuilt/lib/libmmipl.so:system/lib/libmmipl.so \
+    device/lge/l0/prebuilt/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
+    device/lge/l0/prebuilt/lib/libmmjps.so:system/lib/libmmjps.so \
+    device/lge/l0/prebuilt/lib/libmmmpo.so:system/lib/libmmmpo.so \
+    device/lge/l0/prebuilt/lib/libmmmpod.so:system/lib/libmmmpod.so \
+    device/lge/l0/prebuilt/lib/libmmosal.so:system/lib/libmmosal.so \
+    device/lge/l0/prebuilt/lib/libmmparser.so:system/lib/libmmparser.so \
+    device/lge/l0/prebuilt/lib/libmmstillomx.so:system/lib/libmmstillomx.so \
+    device/lge/l0/prebuilt/lib/libnetmgr.so:system/lib/libnetmgr.so \
+    device/lge/l0/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so \
+    device/lge/l0/prebuilt/lib/libOlaFaceDetector.so:system/lib/libOlaFaceDetector.so \
+    device/lge/l0/prebuilt/lib/libOlaLGECameraJNI.so:system/lib/libOlaLGECameraJNI.so \
+    device/lge/l0/prebuilt/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
+    device/lge/l0/prebuilt/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
+    device/lge/l0/prebuilt/lib/libOpenCL.so:system/lib/libOpenCL.so \
     device/lge/l0/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    device/lge/l0/prebuilt/lib/libdiag.so:system/lib/libdiag.so \
-    device/lge/l0/prebuilt/lib/libdl.so:system/lib/libdl.so \
-    device/lge/l0/prebuilt/lib/libdsi_netctrl.so:system/lib/libdsi_netctrl.so \
-    device/lge/l0/prebuilt/lib/libdsutils.so:system/lib/libdsutils.so \
-    device/lge/l0/prebuilt/lib/libidl.so:system/lib/libidl.so \
+    device/lge/l0/prebuilt/lib/libqc-opt.so:system/lib/libqc-opt.so \
     device/lge/l0/prebuilt/lib/libqdi.so:system/lib/libqdi.so \
     device/lge/l0/prebuilt/lib/libqdp.so:system/lib/libqdp.so \
     device/lge/l0/prebuilt/lib/libqmi.so:system/lib/libqmi.so \
@@ -361,21 +375,21 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/libqmi_csi.so:system/lib/libqmi_csi.so \
     device/lge/l0/prebuilt/lib/libqmi_encdec.so:system/lib/libqmi_encdec.so \
     device/lge/l0/prebuilt/lib/libqmiservices.so:system/lib/libqmiservices.so \
-    device/lge/l0/prebuilt/lib/libnetmgr.so:system/lib/libnetmgr.so \
-    device/lge/l0/prebuilt/lib/libqc-opt.so:system/lib/libqc-opt.so \
+    device/lge/l0/prebuilt/lib/libQSEEComAPI.so:system/lib/libQSEEComAPI.so \
+    device/lge/l0/prebuilt/lib/libreference-ril.so:system/lib/libreference-ril.so \
+    device/lge/l0/prebuilt/lib/libril.so:system/lib/libril.so \
     device/lge/l0/prebuilt/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
     device/lge/l0/prebuilt/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so \
-    device/lge/l0/prebuilt/lib/libril.so:system/lib/libril.so \
-    device/lge/l0/prebuilt/lib/libreference-ril.so:system/lib/libreference-ril.so \
-    device/lge/l0/prebuilt/lib/hw/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so \
+    device/lge/l0/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
+    device/lge/l0/prebuilt/lib/libsc-a3xx.so:system/lib/libsc-a3xx.so \
     device/lge/l0/prebuilt/lib/libsensor1.so:system/lib/libsensor1.so \
     device/lge/l0/prebuilt/lib/libsensor_reg.so:system/lib/libsensor_reg.so \
-    device/lge/l0/prebuilt/lib/libami306.so:system/lib/libami306.so \
-    device/lge/l0/prebuilt/lib/liblgftmitem.so:system/lib/liblgftmitem.so \
-    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so \
-    device/lge/l0/prebuilt/lib/hw/nfc.msm8960.so:system/lib/hw/nfc.msm8960.so
-#    device/lge/l0/prebuilt/lib/libxml.so:system/lib/libxml.so \
-#    device/lge/l0/prebuilt/lib/libxml2.so:system/lib/libxml2.so \
+    device/lge/l0/prebuilt/lib/libsensor_test.so:system/lib/libsensor_test.so \
+    device/lge/l0/prebuilt/lib/libsensor_user_cal.so:system/lib/libsensor_user_cal.so \
+    device/lge/l0/prebuilt/lib/libtcpfinaggr.so:system/lib/libtcpfinaggr.so \
+    device/lge/l0/prebuilt/lib/libxml.so:system/lib/libxml.so \
+    device/lge/l0/prebuilt/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
+#    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so \
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -407,10 +421,9 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
-PRODUCT_LOCALES += ko_KR xhdpi
 
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/lge/l0/l0-vendor.mk)
 
 # call dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+#$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)

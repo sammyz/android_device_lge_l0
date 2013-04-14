@@ -1,4 +1,4 @@
-#
+
 # system.prop for surf
 #
 
@@ -12,39 +12,32 @@ wifi.supplicant_no_update_ctrl=true
 dalvik.vm.dexopt-data-only=1
 com.qc.hardware=true
 
-
-ro.baseband.arch=msm
-ro.ril.def.preferred.network=4
-ro.telephony.default_network=4
-ro.telephony.ril.v3=datacall
-ro.telephony.ril_class=LGEQualcommRIL
-rild.libpath=/system/lib/libril-qc-1.so
+# RIL properties
+rild.libpath=/system/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
+ro.telephony.ril_class=LGEQualcommUiccRIL
+ro.telephony.ril.v3=qcomuiccstack
 ro.vendor.extension_library=/system/lib/libqc-opt.so
-
-persist.radio.add_power_save=1
-persist.radio.apm_sim_not_pwdn=1
-persist.radio.call_type=1
-persist.radio.dfr_mode_set=1
-persist.radio.no_wait_for_card=1
-persist.radio.snapshot_disabled=1
-ril.subscription.types=NV,RUIM
-ro.cdma.subscribe_on_ruim_ready=false
-ro.config.combined_signal=true
-ro.config.ehrpd=true
-ro.config.lte=false
-ro.config.multimode_cdma=false
-ro.config.qc_lte_network_modes=false
-ro.config.svlte1x=true
-ro.ril.disable.power.collapse=0
-ro.ril.gprsclass=10
-ro.ril.hsxpa=2
+ro.baseband.arch=msm
+ro.config.lte=true
+ro.telephony.default_network=0
+telephony.lteOnCdmaDevice=1
+telephony.lteOnGsmDevice=1
 ro.ril.shutdown=true
-ro.use_data_netmgrd=true
-telephony.lteOnCdmaDevice=0
-mobiledata.interfaces=wlan0,rmnet0
+ro.ril.hsxpa=1
+ro.ril.gprsclass=10
+ro.config.ehrpd=true
+ro.config.svlte1x=true
+ro.cdma.subscribe_on_ruim_ready=true
+persist.radio.apm_sim_not_pwdn=1
+ril.subscription.types=NV,RUIM
+persist.radio.no_wait_for_card=1
+ro.config.cdma_subscription=1
 
-DEVICE_PROVISIONED=1
+#mtp settings
+persist.sys.usb.config=mtp,adb
+
+ro.nfc.port=I2C
 
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
@@ -55,52 +48,12 @@ persist.rild.nitz_short_ons_0=
 persist.rild.nitz_short_ons_1=
 persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
-
-hwui.render_dirty_regions=false
-hwui.disable_vsync=true
-hwui.print_config=choice
+DEVICE_PROVISIONED=1
 debug.sf.hw=1
-debug.composition.type=gpu
-debug.overlayui.enable=0
-dev.pm.dyn_samplingrate=1
-video.accelerate.hw=1
-debug.performance.tuning=1
-windowsmgr.max_events_per_sec=150
-ro.sf.lcd_density=240
-ro.sf.hwrotation=180
-debug.mdpcomp.maxlayer=0
-debug.gr.swapinterval=0
-persist.sys.ui.hw=0
 debug.egl.hw=1
-ro.min.fling_velocity=8000
-ro.max.fling_velocity=12000
-persist.sys.use_dithering = 0
-
-#possible screen glitch fix
-debug.gr.numframebuffers=3
-
-
-#usb
-persist.sys.usb.config=mtp,adb
-persist.sys.usbcharger.enable=1
-
-#system props for the MM modules
-
-media.stagefright.enable-player=true
-media.stagefright.enable-http=true
-media.stagefright.enable-fma2dp=false
-media.stagefright.enable-aac=true
-media.stagefright.enable-qcp=true
-media.stagefright.enable-scan=true
-ro.media.dec.aud.wma.enabled=1
-ro.media.dec.vid.wmv.enabled=1
-
-
-#
-# system props for the data modules
-#
-ro.use_data_netmgrd=true
-persist.data_netmgrd_mtu=1500
+debug.composition.type=dyn
+ro.sf.compbypass.enable=1
+dev.pm.dyn_samplingrate=1
 
 #
 # system props for the cne module
@@ -116,68 +69,79 @@ persist.cne.snsr.based.rat.mgt=false
 persist.cne.bat.based.rat.mgt=false
 persist.cne.rat.acq.time.out=30000
 persist.cne.rat.acq.retry.tout=0
-persist.cne.sync.swim.mode=false
+persist.cne.nsrm.mode=false
 
-#Warp does not have HDMI, but phone wont boot without the following two lines
-persist.sys.hdmi.on=0
-ro.hdmi.enable=true
+# LPA Mode ON
+lpa.decode=false
+lpa.use-stagefright=true
 
-#system props for time-services
+# system props for the MM modules
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+
+# system props for the data modules
+ro.use_data_netmgrd=true
+
+# system props for time-services
 persist.timed.enable=true
 
 # System props for audio
 persist.audio.fluence.mode=endfire
 persist.audio.vr.enable=false
+persist.audio.handset.mic=digital
 
-#
+# System prop to select audio resampler quality
+af.resampler.quality=255
+
 # system prop for opengles version
-#
-# 131072 is decimal for 0x20000 to report version 2
 ro.opengles.version=131072
 
-#
-# system prop for Bluetooth Auto connect for remote initated connections
-#
+# system prop for Bluetooth
+ro.qualcomm.bluetooth.dun=false
+ro.qualcomm.bluetooth.sap=false
+ro.qualcomm.bluetooth.ftp=true
+ro.bluetooth.hfp.ver=1.6
+ro.qualcomm.bt.hci_transport=smd
+ro.bluetooth.request.master=false
 ro.bluetooth.remote.autoconnect=true
 
-#
-# system prop for Bluetooth FTP profile
-#
-ro.qualcomm.bluetooth.ftp=true
+#system prop for switching gps driver to qmi
+persist.gps.qmienabled=true
 
-#
-# system prop for requesting Master role in incoming Bluetooth connection.
-#
-ro.bluetooth.request.master=true
+# System property for cabl
+ro.qualcomm.cabl=2
 
-#
-# System prop for using landscape preview layout in camera
-#
-debug.camera.landscape=true
+# System prop for sending transmit power request to RIL during WiFi hotspot on/off
+ro.ril.transmitpower=true
 
+# STOCK_BUILD_PROPERTIES
 #
-# ADDITIONAL_BUILD_PROPERTIES
-#
-keyguard.no_require_sim=true
-ro.com.android.dateformat=MM-dd-yyyy
-ro.adb.qemud=1
-ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html
-ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html
-ro.com.google.clientidbase=android-google
-ro.com.android.wifi-watchlist=GoogleGuest
-ro.setupwizard.enterprise_mode=1
-ro.com.android.dataroaming=false
-dalvik.vm.execution-mode=int:jit
-ro.telephony.call_ring.multiple=false
-ro.telephony.call_ring.delay=5000
-dalvik.vm.dexopt-flags=m=y,u=n,v=a,o=v
-debug.enabletr=true
-persist.sys.use_dithering=0
-ro.com.google.locationfeatures=1
-mobiledata.interfaces=wlan0,rmnet0
-dalvik.vm.heapstartsize=5m
-dalvik.vm.heapgrowthlimit=48m
-dalvik.vm.heapsize=256m
-dalvik.vm.lockprof.threshold=500
-net.bt.name=Android
-dalvik.vm.stack-trace-file=/data/anr/traces.txt
+ro.build.target_operator=MPCS
+ro.build.target_country=US
+gsm.sim.operator.iso-country=us
+gsm.operator.iso-country=us
+ro.com.google.clientidbase=android-lge
+ro.com.google.clientidbase.ms=android-metropcs-us
+ro.com.google.clientidbase.yt=android-lge
+ro.com.google.clientidbase.am=android-lge
+ro.com.google.clientidbase.gmm=android-lge
+ro.afwdata.LGfeatureset=MPCSBASE
+wifi.lge.sleeppolicy=0
+wifi.lge.offdelay=true
+persist.data_netmgrd_mtu=1428
+persist.service.ecc.hiddenmenu=
+ro.com.google.gmsversion=4.0_r7
+ro.setupwizard.mode=DISABLED
+ro.livewallpaper.map=DISABLED
+ro.com.google.apphider=off
+drm.service.enabled=true
+ro.sf.lcd_density=160
+ro.hdmi.enable=false
+dhcp.dlna.using=false
+ro.config.vc_call_vol_steps=6
+ro.config.vc_call_vol_default=3
+ro.cdma.voicemail.number=mine
