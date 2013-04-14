@@ -93,8 +93,7 @@ TARGET_PROVIDES_LIBLIGHTS := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-TARGET_CUSTOM_BLUEDROID := ../../../device/lge/l0/bluetooth/bluetooth.c
-
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := ../../../device/lge/l0/bluetooth
 
 # Wifi
 WIFI_DRIVER_MODULE_NAME          := wlan
