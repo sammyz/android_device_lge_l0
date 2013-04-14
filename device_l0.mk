@@ -171,8 +171,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
-    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
-#    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephonycdma.xml
 
 # GPS config
 PRODUCT_COPY_FILES += device/common/gps/gps.conf_AS:system/etc/gps.conf
@@ -196,7 +196,6 @@ PRODUCT_COPY_FILES += \
 # apn config
 PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/apns-conf.xml:/system/etc/apns-conf.xml
-#    device/lge/l0/prebuilt/etc/spn-conf.xml:/system/etc/spn-conf.xml
 
 # Sound configs
 PRODUCT_COPY_FILES += \
@@ -390,8 +389,8 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/lib/libsensor_user_cal.so:system/lib/libsensor_user_cal.so \
     device/lge/l0/prebuilt/lib/libtcpfinaggr.so:system/lib/libtcpfinaggr.so \
     device/lge/l0/prebuilt/lib/libxml.so:system/lib/libxml.so \
-    device/lge/l0/prebuilt/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
-#    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so \
+    device/lge/l0/prebuilt/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
+    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so
 
 # Prebuilt libraries that are needed for DRM playback
 PRODUCT_COPY_FILES += \
