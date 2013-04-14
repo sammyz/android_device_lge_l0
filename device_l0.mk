@@ -391,6 +391,13 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
 #    device/lge/l0/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so \
 
+# Prebuilt libraries that are needed for DRM playback
+PRODUCT_COPY_FILES += \
+    device/lge/l0/prebuilt/vendor/lib/drm/libdrmwvmplugin.so:system/vendor/lib/drm/libdrmwvmplugin.so \
+    device/lge/l0/prebuilt/vendor/lib/libwvdrm_L1.so:system/vendor/lib/libwvdrm_L1.so \
+    device/lge/l0/prebuilt/vendor/lib/libwvm.so:system/vendor/lib/libwvm.so \
+    device/lge/l0/prebuilt/vendor/lib/libWVStreamControlAPI_L1.so:system/vendor/lib/libWVStreamControlAPI_L1.so
+
 # Camera
 PRODUCT_PACKAGES += \
     libcameraservice
