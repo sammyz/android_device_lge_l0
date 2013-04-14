@@ -4,10 +4,15 @@
 # Release name
 PRODUCT_RELEASE_NAME := l0
 
-TARGET_BOOTANIMATION_NAME := vertical-320x480
+# Boot animation
+TARGET_SCREEN_HEIGHT := 480
+TARGET_SCREEN_WIDTH := 320 
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Enhanced NFC
+$(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/lge/l0/device_l0.mk)

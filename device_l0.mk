@@ -35,11 +35,11 @@ PRODUCT_COPY_FILES += \
     device/lge/l0/prebuilt/etc/nfcee_access.xml:system/etc/nfcee_access.xml
 
 PRODUCT_PACKAGES += \
-    nfc.msm8960 \
     libnfc \
     libnfc_jni \
     Nfc \
     Tag
+#    nfc.msm8960 \
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -107,12 +107,12 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8960 \
     audio.primary.msm8960 \
+    audio.usb.default \
     libalsa-intf \
     libaudioutils
 
 # Graphics
 PRODUCT_PACKAGES += \
-    lights.msm8960 \
     copybit.msm8960 \
     gralloc.msm8960 \
     hwcomposer.msm8960 \
@@ -121,6 +121,7 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libQcomUI \
     libtilerenderer
+#    lights.msm8960 \
 
 # LTE on CDMA
 PRODUCT_PACKAGES += \
@@ -169,7 +170,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 #    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
 
 # GPS config
