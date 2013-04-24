@@ -26,6 +26,7 @@ MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 PRODUCT_COPY_FILES := \\
     $OUTDIR/proprietary/lib/liboncrpc.so:obj/lib/liboncrpc.so \\
     $OUTDIR/proprietary/lib/libnv.so:obj/lib/libnv.so \\
+    $OUTDIR/proprietary/lib/libnv8.so:obj/lib/libnv8.so \\
 
 PRODUCT_COPY_FILES += \\
 EOF
