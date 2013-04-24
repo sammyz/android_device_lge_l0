@@ -24,8 +24,8 @@ bin/qmuxd
 bin/qseecomd
 bin/quipc_igsn
 bin/quipc_main
-bin/radish:system/bin/radish
-bin/rild:system/bin/rild
+bin/radish
+bin/rild
 bin/rmt_storage
 bin/sensors.qcom
 bin/thermald
@@ -53,7 +53,7 @@ lib/libami306.so
 lib/libaudcal.so
 lib/libaudioalsa.so
 lib/libc2d2_z180.so
-lib/libC2D2.so:system/lib/libC2D2.so
+lib/libC2D2.so
 lib/libcamera_client.so
 lib/libchromatix_imx074_default_video.so
 lib/libchromatix_imx074_preview.so
