@@ -1,7 +1,9 @@
 **Work in progress for the LG Motion 4G.
 
 **Thanks to:
+
     hroark13 for posting his device repo.
+
 	BobZhome for his time & work on this project.
 
 
@@ -36,7 +38,7 @@ Now initialized the repository and pull the source (with my repos attached):
     
     $ repo sync
 
-Note: Depending on your conection, this might take awhile.
+Note: Depending on your connection, this might take awhile.
 
 Getting my repos for the LG Motion (l0)
 	
