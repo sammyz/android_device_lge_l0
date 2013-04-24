@@ -41,9 +41,7 @@ BOARD_KERNEL_PAGE_SIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=l0 lpj=676678
 BOARD_FORCE_RAMDISK_ADDRESS := 0x81500000
 
-
 TARGET_PREBUILT_KERNEL := device/lge/l0/kernel
-#TARGET_KERNEL_SOURCE := device/lge/MS770_kernel #mv to kernel/lge and rename to l0
 TARGET_KERNEL_CONFIG := l0-perf_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
@@ -95,7 +93,6 @@ TARGET_PROVIDES_LIBLIGHTS := true
 BOARD_HAVE_BLUETOOTH := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/lge/l0/bluetooth/bluetooth.c
 
-
 # Wifi
 WIFI_DRIVER_MODULE_NAME          := wlan
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wlan.ko"
@@ -106,7 +103,6 @@ BOARD_WLAN_DEVICE                := qcwcn
 WIFI_DRIVER_FW_PATH_STA          := "sta"
 WIFI_DRIVER_FW_PATH_AP           := "ap"
 WIFI_DRIVER_FW_PATH_P2P          := "p2p"
-
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -126,4 +122,3 @@ TARGET_BOOTANIMATION_PRELOAD := true
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
-
