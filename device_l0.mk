@@ -22,14 +22,12 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # Kernel Modules
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 PRODUCT_COPY_FILES += $(shell \
-    find $(LOCAL_PATH)prebuilt -name '*.ko' \
+    find $(LOCAL_PATH)/prebuilt -name '*.ko' \
     | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
     | tr '\n' ' ')
 endif
 
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
 
 # NFC
 # Commands to migrate prefs from com.android.nfc3 to com.android.nfc
@@ -169,7 +167,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
 # GPS config
-PRODUCT_COPY_FILES += device/common/gps/gps.conf_AS:system/etc/gps.conf
+PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
 
 # Media config
 PRODUCT_COPY_FILES += \
