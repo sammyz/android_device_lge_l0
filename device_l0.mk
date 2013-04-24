@@ -84,22 +84,6 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
-# MSM8960 firmware
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/a225p5_pm4.fw:/system/etc/firmware/a225p5_pm4.fw \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/a225_pfp.fw:/system/etc/firmware/a225_pfp.fw \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/a225_pm4.fw:/system/etc/firmware/a225_pm4.fw \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/cyttsp_8960_cdp.hex:/system/etc/firmware/cyttsp_8960_cdp.hex \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/leia_pfp_470.fw:/system/etc/firmware/leia_pfp_470.fw \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/leia_pm4_470.fw:/system/etc/firmware/leia_pm4_470.fw \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/vidc.b00:/system/etc/firmware/vidc.b00 \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/vidc.b01:/system/etc/firmware/vidc.b01 \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/vidc.b02:/system/etc/firmware/vidc.b02 \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/vidc.b03:/system/etc/firmware/vidc.b03 \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/vidc.mdt:/system/etc/firmware/vidc.mdt \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/vidc_1080p.fw:/system/etc/firmware/vidc_1080p.fw \
-    $(LOCAL_PATH)/prebuilt/etc/firmware/vidcfw.elf:/system/etc/firmware/vidcfw.elf
-
 # Wifi
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/firmware/wlan/prima/WCNSS_cfg.dat:/system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
@@ -211,30 +195,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/DL_REC:/system/etc/snd_soc_msm/DL_REC \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/DL_REC_2x:/system/etc/snd_soc_msm/DL_REC_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/FM_A2DP_REC:/system/etc/snd_soc_msm/FM_A2DP_REC \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/FM_A2DP_REC_2x:/system/etc/snd_soc_msm/FM_A2DP_REC_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/FM_Digital_Radio:/system/etc/snd_soc_msm/FM_Digital_Radio \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/FM_Digital_Radio_2x:/system/etc/snd_soc_msm/FM_Digital_Radio_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/FM_REC:/system/etc/snd_soc_msm/FM_REC \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/FM_REC_2x:/system/etc/snd_soc_msm/FM_REC_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/HiFi:/system/etc/snd_soc_msm/HiFi \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/HiFi_2x:/system/etc/snd_soc_msm/HiFi_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/HiFi_Low_Power:/system/etc/snd_soc_msm/HiFi_Low_Power \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/HiFi_Low_Power_2x:/system/etc/snd_soc_msm/HiFi_Low_Power_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/HiFi_Rec:/system/etc/snd_soc_msm/HiFi_Rec \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/HiFi_Rec_2x:/system/etc/snd_soc_msm/HiFi_Rec_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/snd_soc_msm:/system/etc/snd_soc_msm/snd_soc_msm \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/snd_soc_msm_2x:/system/etc/snd_soc_msm/snd_soc_msm_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/UL_DL_REC:/system/etc/snd_soc_msm/UL_DL_REC \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/UL_DL_REC_2x:/system/etc/snd_soc_msm/UL_DL_REC_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/Voice_Call:/system/etc/snd_soc_msm/Voice_Call \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/Voice_Call_2x:/system/etc/snd_soc_msm/Voice_Call_2x \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/Voice_Call_IP:/system/etc/snd_soc_msm/Voice_Call_IP \
-    $(LOCAL_PATH)/prebuilt/etc/snd_soc_msm/Voice_Call_IP_2x:/system/etc/snd_soc_msm/Voice_Call_IP_2x
-
 # Keylayouts and Keychars
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/usr/keylayout/MHLRCP.kl:system/usr/keylayout/MHLRCP.kl \
@@ -249,159 +209,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/usr/idc/melfas-ts.idc:system/usr/idc/melfas-ts.idc \
     $(LOCAL_PATH)/prebuilt/usr/idc/osp3-input.idc:system/usr/idc/osp3-input.idc
 
-# Prebuilt libraries that are needed to build open-source libraries
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/lib/libacdbloader.so:obj/lib/libacdbloader.so \
-    $(LOCAL_PATH)/prebuilt/lib/libv8.so:obj/lib/libv8.so
-
-# Prebuilt libraries that are needed
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/bin/atd:system/bin/atd \
-    $(LOCAL_PATH)/prebuilt/bin/ATFWD-daemon:system/bin/ATFWD-daemon \
-    $(LOCAL_PATH)/prebuilt/bin/bridgemgrd:system/bin/bridgemgrd \
-    $(LOCAL_PATH)/prebuilt/bin/btnvtool:system/bin/btnvtool \
-    $(LOCAL_PATH)/prebuilt/bin/cnd:system/bin/cnd \
-    $(LOCAL_PATH)/prebuilt/bin/ds_fmc_appd:system/bin/ds_fmc_appd \
-    $(LOCAL_PATH)/prebuilt/bin/ftm_ptt:system/bin/ftm_ptt \
-    $(LOCAL_PATH)/prebuilt/bin/gsiff_daemon:system/bin/gsiff_daemon \
-    $(LOCAL_PATH)/prebuilt/bin/hci_qcomm_init:system/bin/hci_qcomm_init \
-    $(LOCAL_PATH)/prebuilt/bin/hdmid:system/bin/hdmid \
-    $(LOCAL_PATH)/prebuilt/bin/hostapd:system/bin/hostapd \
-    $(LOCAL_PATH)/prebuilt/bin/mm-pp-daemon:system/bin/mm-pp-daemon \
-    $(LOCAL_PATH)/prebuilt/bin/mm-qcamera-daemon:system/bin/mm-qcamera-daemon \
-    $(LOCAL_PATH)/prebuilt/bin/mpdecision:system/bin/mpdecision \
-    $(LOCAL_PATH)/prebuilt/bin/netmgrd:system/bin/netmgrd \
-    $(LOCAL_PATH)/prebuilt/bin/nl_listener:system/bin/nl_listener \
-    $(LOCAL_PATH)/prebuilt/bin/port-bridge:system/bin/port-bridge \
-    $(LOCAL_PATH)/prebuilt/bin/qmiproxy:system/bin/qmiproxy \
-    $(LOCAL_PATH)/prebuilt/bin/qmuxd:system/bin/qmuxd \
-    $(LOCAL_PATH)/prebuilt/bin/qseecomd:system/bin/qseecomd \
-    $(LOCAL_PATH)/prebuilt/bin/quipc_igsn:system/bin/quipc_igsn \
-    $(LOCAL_PATH)/prebuilt/bin/quipc_main:system/bin/quipc_main \
-    $(LOCAL_PATH)/prebuilt/bin/radish:system/bin/radish \
-    $(LOCAL_PATH)/prebuilt/bin/rild:system/bin/rild \
-    $(LOCAL_PATH)/prebuilt/bin/rmt_storage:system/bin/rmt_storage \
-    $(LOCAL_PATH)/prebuilt/bin/sensors.qcom:system/bin/sensors.qcom \
-    $(LOCAL_PATH)/prebuilt/bin/thermald:system/bin/thermald \
-    $(LOCAL_PATH)/prebuilt/bin/time_daemon:system/bin/time_daemon \
-    $(LOCAL_PATH)/prebuilt/bin/usbhub:system/bin/usbhub \
-    $(LOCAL_PATH)/prebuilt/bin/usbhub_init:system/bin/usbhub_init \
-    $(LOCAL_PATH)/prebuilt/bin/v4l2-qcamera-app:system/bin/v4l2-qcamera-app \
-    $(LOCAL_PATH)/prebuilt/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
-    $(LOCAL_PATH)/prebuilt/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    $(LOCAL_PATH)/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    $(LOCAL_PATH)/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    $(LOCAL_PATH)/prebuilt/lib/egl/libGLESv2S3D_adreno200.so:system/lib/egl/libGLESv2S3D_adreno200.so \
-    $(LOCAL_PATH)/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
-    $(LOCAL_PATH)/prebuilt/lib/hw/camera.msm8960.so:system/lib/hw/camera.msm8960.so \
-    $(LOCAL_PATH)/prebuilt/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
-    $(LOCAL_PATH)/prebuilt/lib/hw/nfc.msm8960.so:system/lib/hw/nfc.msm8960.so \
-    $(LOCAL_PATH)/prebuilt/lib/hw/sensors.msm8960.so:system/lib/hw/sensors.msm8960.so \
-    $(LOCAL_PATH)/prebuilt/lib/libacdbloader.so:system/lib/libacdbloader.so \
-    $(LOCAL_PATH)/prebuilt/lib/libami306.so:system/lib/libami306.so \
-    $(LOCAL_PATH)/prebuilt/lib/libaudcal.so:system/lib/libaudcal.so \
-    $(LOCAL_PATH)/prebuilt/lib/libaudioalsa.so:system/lib/libaudioalsa.so \
-    $(LOCAL_PATH)/prebuilt/lib/libc2d2_z180.so:system/lib/libc2d2_z180.so \
-    $(LOCAL_PATH)/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
-    $(LOCAL_PATH)/prebuilt/lib/libcamera_client.so:system/lib/libcamera_client.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx074_default_video.so:system/lib/libchromatix_imx074_default_video.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx074_preview.so:system/lib/libchromatix_imx074_preview.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx074_video_hd.so:system/lib/libchromatix_imx074_video_hd.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx074_zsl.so:system/lib/libchromatix_imx074_zsl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx091_default_video.so:system/lib/libchromatix_imx091_default_video.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx091_preview.so:system/lib/libchromatix_imx091_preview.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx091_video_hd.so:system/lib/libchromatix_imx091_video_hd.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx111_default_video.so:system/lib/libchromatix_imx111_default_video.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx111_preview.so:system/lib/libchromatix_imx111_preview.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx111_zsl.so:system/lib/libchromatix_imx111_zsl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx119_default_video.so:system/lib/libchromatix_imx119_default_video.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx119_preview.so:system/lib/libchromatix_imx119_preview.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_imx119_vt.so:system/lib/libchromatix_imx119_vt.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_ov2720_default_video.so:system/lib/libchromatix_ov2720_default_video.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_ov2720_preview.so:system/lib/libchromatix_ov2720_preview.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k3l1yx_default_video.so:system/lib/libchromatix_s5k3l1yx_default_video.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k3l1yx_hfr_60fps.so:system/lib/libchromatix_s5k3l1yx_hfr_60fps.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k3l1yx_hfr_90fps.so:system/lib/libchromatix_s5k3l1yx_hfr_90fps.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k3l1yx_hfr_120fps.so:system/lib/libchromatix_s5k3l1yx_hfr_120fps.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k3l1yx_preview.so:system/lib/libchromatix_s5k3l1yx_preview.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k3l1yx_video_hd.so:system/lib/libchromatix_s5k3l1yx_video_hd.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k3l1yx_zsl.so:system/lib/libchromatix_s5k3l1yx_zsl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k4e1_default_video.so:system/lib/libchromatix_s5k4e1_default_video.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k4e1_preview.so:system/lib/libchromatix_s5k4e1_preview.so \
-    $(LOCAL_PATH)/prebuilt/lib/libchromatix_s5k4e1_zsl.so:system/lib/libchromatix_s5k4e1_zsl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libCommandSvc.so:system/lib/libCommandSvc.so \
-    $(LOCAL_PATH)/prebuilt/lib/libconfigdb.so:system/lib/libconfigdb.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdiag.so:system/lib/libdiag.so \
-    $(LOCAL_PATH)/prebuilt/lib/libDivxDrm.so:system/lib/libDivxDrm.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdl.so:system/lib/libdl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdrmdiag.so:system/lib/libdrmdiag.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdrmfs.so:system/lib/libdrmfs.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdsi_netctrl.so:system/lib/libdsi_netctrl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdsprofile.so:system/lib/libdsprofile.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdss.so:system/lib/libdss.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdsucsd.so:system/lib/libdsucsd.so \
-    $(LOCAL_PATH)/prebuilt/lib/libdsutils.so:system/lib/libdsutils.so \
-    $(LOCAL_PATH)/prebuilt/lib/libgemini.so:system/lib/libgemini.so \
-    $(LOCAL_PATH)/prebuilt/lib/libgps.so:system/lib/libgps.so \
-    $(LOCAL_PATH)/prebuilt/lib/libgps.utils.so:system/lib/libgps.utils.so \
-    $(LOCAL_PATH)/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libI420colorconvert.so:system/lib/libI420colorconvert.so \
-    $(LOCAL_PATH)/prebuilt/lib/libidl.so:system/lib/libidl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libimage-jpeg-dec-omx-comp.so:system/lib/libimage-jpeg-dec-omx-comp.so \
-    $(LOCAL_PATH)/prebuilt/lib/libimage-jpeg-enc-omx-comp.so:system/lib/libimage-jpeg-enc-omx-comp.so \
-    $(LOCAL_PATH)/prebuilt/lib/libimage-omx-common.so:system/lib/libimage-omx-common.so \
-    $(LOCAL_PATH)/prebuilt/lib/liblgftmitem.so:system/lib/liblgftmitem.so \
-    $(LOCAL_PATH)/prebuilt/lib/libllvm-a3xx.so:system/lib/libllvm-a3xx.so \
-    $(LOCAL_PATH)/prebuilt/lib/libloc_adapter.so:system/lib/libloc_adapter.so \
-    $(LOCAL_PATH)/prebuilt/lib/libloc_api_v02.so:system/lib/libloc_api_v02.so \
-    $(LOCAL_PATH)/prebuilt/lib/libloc_eng.so:system/lib/libloc_eng.so \
-    $(LOCAL_PATH)/prebuilt/lib/libloc_ext.so:system/lib/libloc_ext.so \
-    $(LOCAL_PATH)/prebuilt/lib/liblog.so:system/lib/liblog.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmcamera_faceproc.so:system/lib/libmmcamera_faceproc.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmcamera_frameproc.so:system/lib/libmmcamera_frameproc.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmcamera_statsproc30.so:system/lib/libmmcamera_statsproc30.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmipl.so:system/lib/libmmipl.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmjps.so:system/lib/libmmjps.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmmpo.so:system/lib/libmmmpo.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmmpod.so:system/lib/libmmmpod.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmosal.so:system/lib/libmmosal.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmparser.so:system/lib/libmmparser.so \
-    $(LOCAL_PATH)/prebuilt/lib/libmmstillomx.so:system/lib/libmmstillomx.so \
-    $(LOCAL_PATH)/prebuilt/lib/libnetmgr.so:system/lib/libnetmgr.so \
-    $(LOCAL_PATH)/prebuilt/lib/liboemcamera.so:system/lib/liboemcamera.so \
-    $(LOCAL_PATH)/prebuilt/lib/libOlaFaceDetector.so:system/lib/libOlaFaceDetector.so \
-    $(LOCAL_PATH)/prebuilt/lib/libOlaLGECameraJNI.so:system/lib/libOlaLGECameraJNI.so \
-    $(LOCAL_PATH)/prebuilt/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
-    $(LOCAL_PATH)/prebuilt/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-    $(LOCAL_PATH)/prebuilt/lib/libOpenCL.so:system/lib/libOpenCL.so \
-    $(LOCAL_PATH)/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqc-opt.so:system/lib/libqc-opt.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqdi.so:system/lib/libqdi.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqdp.so:system/lib/libqdp.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqmi.so:system/lib/libqmi.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqmi_cci.so:system/lib/libqmi_cci.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqmi_common_so.so:system/lib/libqmi_common_so.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqmi_csi.so:system/lib/libqmi_csi.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqmi_encdec.so:system/lib/libqmi_encdec.so \
-    $(LOCAL_PATH)/prebuilt/lib/libqmiservices.so:system/lib/libqmiservices.so \
-    $(LOCAL_PATH)/prebuilt/lib/libQSEEComAPI.so:system/lib/libQSEEComAPI.so \
-    $(LOCAL_PATH)/prebuilt/lib/libreference-ril.so:system/lib/libreference-ril.so \
-    $(LOCAL_PATH)/prebuilt/lib/libril.so:system/lib/libril.so \
-    $(LOCAL_PATH)/prebuilt/lib/libril-qc-qmi-1.so:system/lib/libril-qc-qmi-1.so \
-    $(LOCAL_PATH)/prebuilt/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so \
-    $(LOCAL_PATH)/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
-    $(LOCAL_PATH)/prebuilt/lib/libsc-a3xx.so:system/lib/libsc-a3xx.so \
-    $(LOCAL_PATH)/prebuilt/lib/libsensor1.so:system/lib/libsensor1.so \
-    $(LOCAL_PATH)/prebuilt/lib/libsensor_reg.so:system/lib/libsensor_reg.so \
-    $(LOCAL_PATH)/prebuilt/lib/libsensor_test.so:system/lib/libsensor_test.so \
-    $(LOCAL_PATH)/prebuilt/lib/libsensor_user_cal.so:system/lib/libsensor_user_cal.so \
-    $(LOCAL_PATH)/prebuilt/lib/libtcpfinaggr.so:system/lib/libtcpfinaggr.so \
-    $(LOCAL_PATH)/prebuilt/lib/libxml.so:system/lib/libxml.so \
-    $(LOCAL_PATH)/prebuilt/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
-    $(LOCAL_PATH)/prebuilt/lib/hw/lights.msm8960.so:system/lib/hw/lights.msm8960.so
-
 # Camera
 PRODUCT_PACKAGES += \
     libcameraservice
@@ -409,10 +216,6 @@ PRODUCT_PACKAGES += \
 # Torch
 PRODUCT_PACKAGES += \
     Torch
-
-# Kernel modules
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/lib/modules/wlan.ko:/system/lib/modules/wlan.ko \
 
 # Extra properties
 PRODUCT_PROPERTY_OVERRIDES += \
