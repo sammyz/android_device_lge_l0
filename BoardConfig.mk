@@ -41,7 +41,9 @@ BOARD_KERNEL_PAGE_SIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=l0 lpj=676678
 BOARD_FORCE_RAMDISK_ADDRESS := 0x81500000
 
-TARGET_KERNEL_SOURCE := device/lge/MS770_kernel
+
+TARGET_PREBUILT_KERNEL := device/lge/l0/kernel
+#TARGET_KERNEL_SOURCE := device/lge/MS770_kernel #mv to kernel/lge and rename to l0
 TARGET_KERNEL_CONFIG := l0-perf_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
