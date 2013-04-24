@@ -106,7 +106,7 @@ Installing CM10
 ---------------
 If the build was successful, you can now take the update zip found in out/target/product/l0/ and flash using a custom recovery. Make sure to grab the latest Gapps to complete the experience.
 
-Note: Currently the produced zip will been to be edited and repack with the stock boot.img or the boot.img removed and the updater-script edited accordingly.
+Note: Currently the produced zip will need to be edited and repack with the stock boot.img or the boot.img removed and the updater-script edited accordingly.
 
 When you want to rebuild with new changes to the BoardConfig.mk or after syncing to the latest CM src make sure to do the following before you recompile.
 
