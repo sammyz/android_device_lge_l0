@@ -60,6 +60,8 @@ persist.timed.enable=true
 persist.audio.fluence.mode=endfire
 persist.audio.vr.enable=false
 persist.audio.handset.mic=analog
+ro.lge.audio_soundexception=true
+ro.lge.audio_soundprofile=true
 
 # System prop to select audio resampler quality
 af.resampler.quality=255

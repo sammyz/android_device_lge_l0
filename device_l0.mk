@@ -19,38 +19,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# Kernel Modules
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-PRODUCT_COPY_FILES += $(shell \
-    find $(LOCAL_PATH)/prebuilt -name '*.ko' \
-    | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
-    | tr '\n' ' ')
-endif
-
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-
-# NFC
-# Commands to migrate prefs from com.android.nfc3 to com.android.nfc
-PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
-packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt)
-
-# NFC EXTRAS add-on API
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
-
-# NFCEE access control
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/nfcee_access.xml:system/etc/nfcee_access.xml
-
-PRODUCT_PACKAGES += \
-    nfc.msm8960 \
-    libnfc \
-    libnfc_jni \
-    Nfc \
-    Tag
-
 # OMX
 PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
@@ -88,12 +56,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini:/system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/prebuilt/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin:/system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
     $(LOCAL_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/prebuilt/lib/modules/wlan.ko:system/lib/modules/wlan.ko
-
-# Video (Temp)
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/prebuilt/lib/libOmxVdec.so:/obj/lib/libOmxVdec.so \
-#    $(LOCAL_PATH)/prebuilt/lib/libOmxVdec.so:/system/lib/libOmxVdec.so
+	$(LOCAL_PATH)/prebuilt/lib/modules/wlan.ko:system/lib/modules/wlan.ko
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -116,10 +79,6 @@ PRODUCT_PACKAGES += \
     libQcomUI \
     libtilerenderer
 
-# LTE on CDMA
-PRODUCT_PACKAGES += \
-    Stk
-
 # Qualcomm scripts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/etc/init.lge_dut.bt.sh:/system/etc/init.lge_dut.bt.sh \
@@ -137,13 +96,13 @@ PRODUCT_COPY_FILES += \
 
 # 2nd-init
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/xbin/2nd-init:/system/xbin/2nd-init \
-    $(LOCAL_PATH)/prebuilt/xbin/cm10.sh:/system/xbin/cm10.sh \
-    $(LOCAL_PATH)/prebuilt/xbin/cm10.tar:/system/xbin/cm10.tar \
-    $(LOCAL_PATH)/prebuilt/xbin/mksh2:/system/xbin/mksh2 \
-    $(LOCAL_PATH)/prebuilt/xbin/recovery.sh:/system/xbin/recovery.sh \
-    $(LOCAL_PATH)/prebuilt/xbin/recovery.tar:/system/xbin/recovery.tar \
-    $(LOCAL_PATH)/prebuilt/xbin/taskset:/system/xbin/taskset
+    $(LOCAL_PATH)/2nd-init/2nd-init:/system/xbin/2nd-init \
+    $(LOCAL_PATH)/2nd-init/cm10.sh:/system/xbin/cm10.sh \
+    $(LOCAL_PATH)/2nd-init/cm10.tar:/system/xbin/cm10.tar \
+    $(LOCAL_PATH)/2nd-init/mksh2:/system/xbin/mksh2 \
+    $(LOCAL_PATH)/2nd-init/recovery.sh:/system/xbin/recovery.sh \
+    $(LOCAL_PATH)/2nd-init/recovery.tar:/system/xbin/recovery.tar \
+    $(LOCAL_PATH)/2nd-init/taskset:/system/xbin/taskset
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -164,18 +123,16 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 
 # GPS config
 PRODUCT_COPY_FILES += device/common/gps/gps.conf_US:system/etc/gps.conf
 
 # Media config
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/etc/featureset.xml:system/etc/featureset.xml \
     $(LOCAL_PATH)/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/prebuilt/etc/settings.xml:system/etc/settings.xml \
-    $(LOCAL_PATH)/prebuilt/etc/telephony.xml:system/etc/telephony.xml
+    $(LOCAL_PATH)/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 # vold config
 PRODUCT_COPY_FILES += \
@@ -207,6 +164,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/usr/idc/melfas-ts.idc:system/usr/idc/melfas-ts.idc \
     $(LOCAL_PATH)/prebuilt/usr/idc/osp3-input.idc:system/usr/idc/osp3-input.idc
 
+# Prebuilt libraries that are needed for DRM playback
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/vendor/lib/drm/libdrmwvmplugin.so:system/vendor/lib/drm/libdrmwvmplugin.so \
+    $(LOCAL_PATH)/prebuilt/vendor/lib/libwvdrm_L1.so:system/vendor/lib/libwvdrm_L1.so \
+    $(LOCAL_PATH)/prebuilt/vendor/lib/libwvm.so:system/vendor/lib/libwvm.so \
+    $(LOCAL_PATH)/prebuilt/vendor/lib/libWVStreamControlAPI_L1.so:system/vendor/lib/libWVStreamControlAPI_L1.so \
+    $(LOCAL_PATH)/prebuilt/etc/permissions/com.google.widevine.software.drm.xml:system/etc/permissions/com.google.widevine.software.drm.xml
+
 # Camera
 PRODUCT_PACKAGES += \
     libcameraservice
@@ -225,7 +190,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # We have enough space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
@@ -233,5 +197,6 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/lge/l0/l0-vendor.mk)
 
-# call dalvik heap config
-#$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+### TEMP DIRTY HACK FOR LOGCAT ###
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/prebuilt/bin/logcat:system/bin/logcat

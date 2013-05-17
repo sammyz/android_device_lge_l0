@@ -42,6 +42,11 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=l0 lpj=67
 BOARD_FORCE_RAMDISK_ADDRESS := 0x81500000
 
 TARGET_PREBUILT_KERNEL := device/lge/l0/kernel
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_KERNEL):kernel
+
 TARGET_KERNEL_CONFIG := l0-perf_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
@@ -85,6 +90,8 @@ COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 TARGET_USES_ION_AUDIO := true
+BOARD_USES_FLUENCE_INCALL := true
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
@@ -122,3 +129,11 @@ TARGET_BOOTANIMATION_PRELOAD := true
 
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun0/file
+
+# Releasetools
+TARGET_PROVIDES_RELEASETOOLS := true
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/lge/l0/releasetools/l0_ota_from_target_files
+
+# 2nd-iit recovery
+#TARGET_RECOVERY_PRE_COMMAND := "echo 1 > /data/local/tmp/.recovery_mode; \#"
+#TARGET_RECOVERY_PRE_COMMAND_CLEAR_REASON := true
