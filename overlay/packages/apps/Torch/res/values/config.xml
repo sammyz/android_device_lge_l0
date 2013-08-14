@@ -1,4 +1,0 @@
-<resources>
-    <bool name="useCameraInterface">true</bool>
-    <string name="flashDevice">/sys/class/leds/spotlight/brightness</string>
-</resources>
