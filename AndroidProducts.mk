@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_l0.mk
+    $(LOCAL_DIR)/aokp_l0.mk
