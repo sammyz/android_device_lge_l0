@@ -48,7 +48,7 @@ Getting my repos for the LG Motion (l0)
 
 	$ cd lge
 
-	$ git clone https://github.com/playfulgod/android_device_lge_l0.git -b jellybean l0
+	$ git clone https://github.com/sammyz/android_device_lge_l0.git -b aokp l0
 
 
 Getting kernel source
