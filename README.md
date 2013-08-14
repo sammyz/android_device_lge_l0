@@ -16,13 +16,13 @@ HOW-TO BUILD:
 Getting the (right) source
 --------------------------
 
-First, we need to create directories for the build (system can be whatever you want to name your working directory):
+First, we need to create directories for the build (aokp can be whatever you want to name your working directory):
 
     $ mkdir -p ~/bin
 
-    $ mkdir -p ~/android/system
+    $ mkdir -p ~/android/aokp
 
-Now we'll need repo. Let's download it and make it executable:
+Now we'll need repo. Let's download it and make it executable (If you have already done this before with CM, skip):
 
     $ curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo
 
@@ -32,9 +32,9 @@ Log out and back in so the changes take effect.
 
 Now initialized the repository and pull the source (with my repos attached):
 
-    $ cd ~/android/system/
+    $ cd ~/android/aokp/
     
-    $ repo init -u git://github.com/CyanogenMod/android.git -b jellybean
+    $ repo init -u https://github.com/AOKP/platform_manifest.git -b jb
     
     $ repo sync
 
@@ -73,36 +73,27 @@ We will need to reuse some proprietary files from the stock ROM:
 
     $ cd
     
-    $ cd ~/android/system/device/lge/l0
+    $ cd ~/android/aokp/device/lge/l0
     
     $ ./extract-files.sh
 
-or place a copy of a stock ROM zip or previous CM build in device/lge/l0
+or place a copy of a stock ROM zip or previous CM/AOKP build in device/lge/l0
 
 	$ ./unzip-files.sh name-of-zip.zip
 
-Building CM10
+Building AOKP
 -------------
-Once thats done you can start compiling.
-
-Follow the aosp instructions on setting up the build environment. - http://source.android.com/source/download.html
-
-When the environment is setup, we need to grab a copy of Koush's ROM Manager and the Term.apk. This is necessary to build CM10.
-
-    $ cd ~/android/system/vendor/cm
-
-    $ ./get-prebuilts
 
 Now, we build (system being your work directory):
 
-    $ cd ~/android/system
+    $ cd ~/android/aokp
 
 To build for the LG Motion 4G:
     
     $ . build/envsetup.sh && brunch l0
 
 
-Installing CM10
+Installing AOKP
 ---------------
 If the build was successful, you can now take the update zip found in out/target/product/l0/ and flash using a custom recovery. Make sure to grab the latest Gapps to complete the experience.
 
